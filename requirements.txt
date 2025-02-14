@@ -1,0 +1,7 @@
+fastapi[all]  # Instala todas as dependências do FastAPI, incluindo Swagger e outras ferramentas
+sqlalchemy    # ORM para interação com o banco de dados
+psycopg2      # Adaptador PostgreSQL para Python
+pydantic      # Para validação de dados
+pytest        # Framework de testes unitários
+uvicorn       # Servidor ASGI para rodar o FastAPI
+python-dotenv  # Para carregar variáveis de ambiente do arquivo .env
