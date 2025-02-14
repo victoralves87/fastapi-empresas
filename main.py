@@ -34,6 +34,14 @@ def get_empresa(empresa_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Empresa não encontrada")
     return empresa
 
+# Deletar empresa
+@app.delete("/empresas/{empresa_id}", response_model=schemas.EmpresaResponse)  # Corrigido o modelo de resposta
+def delete_empresa_route(empresa_id: int, db: Session = Depends(get_db)):
+    empresa = crud.delete_empresa(db, empresa_id)  # Corrigindo a chamada para a função de delete
+    if empresa is None:
+        raise HTTPException(status_code=404, detail="Empresa não encontrada")
+    return empresa
+
 # Criar obrigação acessória
 @app.post("/obrigacoes/", response_model=schemas.ObrigacaoAcessoriaResponse)
 def create_obrigacao(obrigacao: schemas.ObrigacaoAcessoriaCreate, db: Session = Depends(get_db)):
